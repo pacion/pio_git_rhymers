@@ -4,7 +4,7 @@ public class DefaultRhymer {
     private static final int new_total = -1;
     private static final int twelve = 12;
     private static final int eleven = 11;
-    private int[] numbers = new int[twelve];
+    private final int[] numbers = new int[twelve];
 
     public int total = -1;
 
