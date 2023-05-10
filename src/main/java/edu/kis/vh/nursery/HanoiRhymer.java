@@ -9,7 +9,7 @@ public class HanoiRhymer extends DefaultRhymer {
     }
 
     @Override
-    public void countIn(int in) {
+    public void countIn(int in) { // TODO what is peekaboo()? change this method name to something more meaningful
         if (!callCheck() && in > peekaboo())
             totalRejected++;
         else
