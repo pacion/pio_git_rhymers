@@ -18,22 +18,29 @@ public class RhymersJUnitTest {
     @Test
     public void callCheckShouldReturnTrueWhenRhymerIsEmpty() {
         DefaultRhymer rhymer = new DefaultRhymer();
+
         boolean result = rhymer.callCheck();
+
         Assert.assertTrue(result);
     }
 
     @Test
     public void callCheckShouldReturnFalseWhenRhymerIsNotEmpty() {
         DefaultRhymer rhymer = new DefaultRhymer();
+
         rhymer.countIn(888);
+
         boolean result = rhymer.callCheck();
+
         Assert.assertFalse(result);
     }
 
     @Test
     public void isFullShouldReturnFalseWhenRhymerIsNotFull() {
         DefaultRhymer rhymer = new DefaultRhymer();
+
         final int STACK_CAPACITY = 12;
+
         for (int i = 0; i < STACK_CAPACITY; i++) {
             boolean result = rhymer.isFull();
             Assert.assertFalse(result);
@@ -44,21 +51,26 @@ public class RhymersJUnitTest {
     @Test
     public void isFullShouldReturnTrueWhenRhymerIsNotFull() {
         DefaultRhymer rhymer = new DefaultRhymer();
+
         final int STACK_CAPACITY = 12;
+
         for (int i = 0; i < STACK_CAPACITY; i++) {
             rhymer.countIn(888);
         }
 
         boolean result = rhymer.isFull();
+
         Assert.assertTrue(result);
     }
 
     @Test
     public void peekabooShouldReturnEmptyStackValueWhenRhymerIsEmpty() {
         DefaultRhymer rhymer = new DefaultRhymer();
+
         final int EMPTY_STACK_VALUE = -1;
 
         int result = rhymer.peekaboo();
+
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
     }
 
@@ -119,4 +131,47 @@ public class RhymersJUnitTest {
         Assert.assertEquals(EMPTY_STACK_VALUE, result);
     }
 
+    @Test
+    public void hanoiRhymerCountInShouldNotBeRejectedWhenValuesAreInsertedInDescendingOrder() {
+        HanoiRhymer rhymer = new HanoiRhymer();
+        rhymer.countIn(2);
+
+        int result = rhymer.reportRejected();
+        Assert.assertEquals(0, result);
+
+        rhymer.countIn(1);
+        result = rhymer.reportRejected();
+        Assert.assertEquals(0, result);
+    }
+
+    @Test
+    public void hanoiRhymerCountInShouldBeRejectedWhenValuesAreInsertedInAscendingOrder() {
+        HanoiRhymer rhymer = new HanoiRhymer();
+        rhymer.countIn(1);
+
+        int result = rhymer.reportRejected();
+        Assert.assertEquals(0, result);
+
+        rhymer.countIn(2);
+        result = rhymer.reportRejected();
+        Assert.assertEquals(1, result);
+    }
+
+    @Test
+    public void hanoiRhymerCountInShouldAllowToInsertValuesUsingHanoiAlgorithm() {
+        HanoiRhymer rhymer = new HanoiRhymer();
+        rhymer.countIn(1);
+
+        int result = rhymer.reportRejected();
+        Assert.assertEquals(0, result);
+
+        rhymer.countIn(2);
+        result = rhymer.reportRejected();
+        Assert.assertEquals(1, result);
+
+        int previousValue = rhymer.countOut();
+        rhymer.countIn(2);
+        rhymer.countIn(previousValue);
+        Assert.assertEquals(1, result);
+    }
 }
