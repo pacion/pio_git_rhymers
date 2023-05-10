@@ -7,7 +7,7 @@ public class DefaultRhymer {
     private static final int IS_FULL = 11;
     private final int[] numbers = new int[NUMBERS_AMOUNT];
 
-    public int total = -1;
+    private int total = -1;
 
     public void countIn(int in) {
         if (!isFull())
@@ -15,11 +15,11 @@ public class DefaultRhymer {
     }
 
     boolean callCheck() {
-        return total == NEW_TOTAL;
+        return getTotal() == NEW_TOTAL;
     }
 
     boolean isFull() {
-        return total == IS_FULL;
+        return getTotal() == IS_FULL;
     }
 
     protected int peekaboo() {
@@ -34,4 +34,11 @@ public class DefaultRhymer {
         return numbers[total--];
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
 }
