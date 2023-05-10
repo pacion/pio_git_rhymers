@@ -1,6 +1,6 @@
 package edu.kis.vh.nursery.list;
 
-public class Node {
+public class Node { // TODO this class is never used, consider removing it
 
     public int value;
     public Node prev, next;
@@ -8,5 +8,5 @@ public class Node {
     public Node(int i) {
         value = i;
     }
-    
+
 }
