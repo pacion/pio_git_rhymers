@@ -25,6 +25,7 @@ public class DefaultRhymer {
     protected int peekaboo() {
         if (callCheck())
             return NEW_TOTAL;
+
         return numbers[total];
     }
 
