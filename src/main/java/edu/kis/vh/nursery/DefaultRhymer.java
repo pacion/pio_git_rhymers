@@ -1,6 +1,7 @@
 package edu.kis.vh.nursery;
 
 public class DefaultRhymer {
+
     private static final int NEW_TOTAL = -1;
     private static final int NUMBERS_AMOUNT = 12;
     private static final int IS_FULL = 11;
@@ -13,11 +14,11 @@ public class DefaultRhymer {
             numbers[++total] = in;
     }
 
-    public boolean callCheck() {
+    boolean callCheck() {
         return total == NEW_TOTAL;
     }
 
-    public boolean isFull() {
+    boolean isFull() {
         return total == IS_FULL;
     }
 
